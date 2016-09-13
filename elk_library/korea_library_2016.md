@@ -42,8 +42,7 @@
   ![6.PNG](img/6.PNG)
 7. 업로드 결과
   - 모든 내용 업로드 되었는지 확인
-  
-  ![7.PNG](img/7.PNG)
+  - 위도/경도 값이 없는 정보 등을 제외하고 1,490 업로드 되어 있으면 정상
 
 [가시화]
 
@@ -54,7 +53,7 @@
 [참고]
 - logstash conf 파일 : [lib_csv.conf](lib_csv.conf)
 - 인덱스 속성 등록
-'''
+```json
 curl -XPUT http://localhost:9200/korea-library-2016 -d '
    {
      "mappings" : {
@@ -77,9 +76,9 @@ curl -XPUT http://localhost:9200/korea-library-2016 -d '
        }
      }
    }'
-'''
+```
 
 - 일괄 데이터 삭제
-'''
+```json
 curl -XDELETE http://localhost:9200/korea-library-2016
-'''
+```
