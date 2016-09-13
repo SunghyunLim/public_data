@@ -3,7 +3,9 @@
 1. 공공데이터에 있는 오류를 수정, 활용할 수 있도록 조정
 
 #작업 내용
+
 [데이터 정제]
+
 1. 다운로드
   - data.go.kr에서 전국 [도서관 표준 데이터](https://www.data.go.kr/subMain.jsp?param=REFUQUdSSURAMTUwMTMxMDk=#/L2NvbW0vY29tbW9uU2VhcmNoL2RhdGFzZXREZXRhaWwkQF4wMTJtMSRAXnB1YmxpY0RhdGFQaz0xNTAxMzEwOSRAXmJybUNkPU9DMDAwMSRAXm9yZ0luZGV4PURBVEFTRVQ=) 의 excel 파일 다운로드
 2. 분석 결과 다음의 이슈 발생
@@ -21,6 +23,7 @@
   - 한글 인코딩의 문제를 가장 손쉽게 해결하는 방안
 
 [데이터 업로드]
+
 1. ELK 다운로드/ 설치
   - ElasticSearch(엔진) - Logstash(데이터 수집기) - Kibana(가시화)
   - https://www.elastic.co/kr/ 사이트 참조
@@ -33,21 +36,21 @@ curl -XPUT http://localhost:9200/korea-library-2016 -d '
    {
      "mappings" : {
        "korea-library" : {
-       "properties" : {
-       "도서관명" : {"type" : "string", "index" : "not_analyzed" },
-       "시도명" : {"type" : "string", "index" : "not_analyzed" },
-       "시군구명" : {"type" : "string", "index" : "not_analyzed" },
-       "도서관유형" : {"type" : "string", "index" : "not_analyzed" },
-       "휴관일" : {"type" : "string", "index" : "not_analyzed" },
-       "열람좌석수" : {"type" : "integer" },
-       "자료수(도서)" : {"type" : "integer"},
-       "소재지도로명주소" : {"type" : "string", "index" : "not_analyzed" },
-       "운영기관명" : {"type" : "string", "index" : "not_analyzed" },
-       "도서관전화번호" : {"type" : "string", "index" : "not_analyzed" },
-       "홈페이지주소" : {"type" : "string", "index" : "not_analyzed" },
-       "library_geo" : { "type" : "geo_point" },
-       "데이터기준일자" : {"type" : "date" }
-         }
+          "properties" : {
+             "도서관명" : {"type" : "string", "index" : "not_analyzed" },
+             "시도명" : {"type" : "string", "index" : "not_analyzed" },
+             "시군구명" : {"type" : "string", "index" : "not_analyzed" },
+             "도서관유형" : {"type" : "string", "index" : "not_analyzed" },
+             "휴관일" : {"type" : "string", "index" : "not_analyzed" },
+             "열람좌석수" : {"type" : "integer" },
+             "자료수(도서)" : {"type" : "integer"},
+             "소재지도로명주소" : {"type" : "string", "index" : "not_analyzed" },
+             "운영기관명" : {"type" : "string", "index" : "not_analyzed" },
+             "도서관전화번호" : {"type" : "string", "index" : "not_analyzed" },
+             "홈페이지주소" : {"type" : "string", "index" : "not_analyzed" },
+             "library_geo" : { "type" : "geo_point" },
+             "데이터기준일자" : {"type" : "date" }
+          }
        }
      }
    }'
@@ -56,7 +59,7 @@ curl -XPUT http://localhost:9200/korea-library-2016 -d '
   ![5.PNG](img/5.PNG)
 4. Logstash conf 파일 만들기
   - lib_csv.conf 파일을 다음과 같이 만들어본다.  
-```json
+```
 input {  
   file {
     path => "F:/zz.project/easy/ELK/logstash-2.4.0/data/korea_library_2016.csv"
@@ -102,4 +105,5 @@ output {
   ![7.PNG](img/7.PNG)
 
 [가시화]
+
 1. 
