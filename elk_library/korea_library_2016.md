@@ -30,74 +30,13 @@
 2. 서비스 가동 
   - localhost:5601 서비스 확인
 3. ElasticSearch에 속성 업로드
-  - 아래 내용을 참조해서 속성 등록  
-```json
-curl -XPUT http://localhost:9200/korea-library-2016 -d '
-   {
-     "mappings" : {
-       "korea-library" : {
-          "properties" : {
-             "도서관명" : {"type" : "string", "index" : "not_analyzed" },
-             "시도명" : {"type" : "string", "index" : "not_analyzed" },
-             "시군구명" : {"type" : "string", "index" : "not_analyzed" },
-             "도서관유형" : {"type" : "string", "index" : "not_analyzed" },
-             "휴관일" : {"type" : "string", "index" : "not_analyzed" },
-             "열람좌석수" : {"type" : "integer" },
-             "자료수(도서)" : {"type" : "integer"},
-             "소재지도로명주소" : {"type" : "string", "index" : "not_analyzed" },
-             "운영기관명" : {"type" : "string", "index" : "not_analyzed" },
-             "도서관전화번호" : {"type" : "string", "index" : "not_analyzed" },
-             "홈페이지주소" : {"type" : "string", "index" : "not_analyzed" },
-             "library_geo" : { "type" : "geo_point" },
-             "데이터기준일자" : {"type" : "date" }
-          }
-       }
-     }
-   }'
-```
+  - 아래 내용을 참조해서 속성 등록
+  ![code1.PNG](img/code1.PNG)
 4. Kibana에서 인덱스 추가함(time pased event 체크 풀기)
   ![5.PNG](img/5.PNG)
-  
 5. Logstash conf 파일 만들기
   - lib_csv.conf 파일을 다음과 같이 만들어본다.  
-```
-input {  
-  file {
-    path => "F:/zz.project/easy/ELK/logstash-2.4.0/data/korea_library_2016.csv"
-    start_position => "beginning"    
-  }
-}
-filter {  
-   csv {
-       separator => ","
-       columns => ["도서관명","시도명","시군구명","도서관유형","휴관일","운영시작시각","운영종료시각","열람좌석수","자료수(도서)","자료수(연속간행물)","자료수(비도서)","대출가능권수","대출가능일수","소재지도로명주소","운영기관명","도서관전화번호","부지면적","건물면적","홈페이지주소","latitude","longitude","데이터기준일자"]
-   }
-   mutate {
-      convert => { "latitude" => "float" }
-      convert => { "longitude" => "float" }
-   }
-
-   mutate {
-      rename => {
-          "latitude" => "[library_geo][lat]"
-          "longitude" => "[library_geo][lon]"
-      }
-   }
-   mutate {
-       remove_field => ["운영시작시각","운영종료시각", "자료수(연속간행물)", "자료수(비도서)", "대출가능권수", "대출가능일수", "부지면적","건물면적"]
-   }
-}
-output {  
-    elasticsearch {
-        hosts => ["127.0.0.1"]
-        index => "korea-library-2016"
-        document_type => "korea-library"
-    }
-    stdout {
-        codec => rubydebug
-    }
-}
-```
+  ![code2.PNG](img/code2.PNG) 
 6. 실행 및 결과
   - bin/logstash.bat -f conf/lib_csv.conf 등과 같이 실행한다.
   ![6.PNG](img/6.PNG)
