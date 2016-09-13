@@ -56,10 +56,10 @@ curl -XPUT http://localhost:9200/korea-library-2016 -d '
      }
    }'
 ```
-  - Kibana에서 인덱스 추가함(time pased event 체크 풀기)
+4. Kibana에서 인덱스 추가함(time pased event 체크 풀기)
   ![5.PNG](img/5.PNG)
   
-4. Logstash conf 파일 만들기
+5. Logstash conf 파일 만들기
   - lib_csv.conf 파일을 다음과 같이 만들어본다.  
 ```
 input {  
@@ -99,10 +99,10 @@ output {
     }
 }
 ```
-5. 실행 및 결과
+6. 실행 및 결과
   - bin/logstash.bat -f conf/lib_csv.conf 등과 같이 실행한다.
   ![6.PNG](img/6.PNG)
-6. 업로드 결과
+7. 업로드 결과
   - 모든 내용 업로드 되었는지 확인 
   ![7.PNG](img/7.PNG)
 
