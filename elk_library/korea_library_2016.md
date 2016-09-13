@@ -32,17 +32,17 @@
 3. ElasticSearch에 속성 업로드(속성부터 업로드하는 것을 권장함)
   - 아래 내용을 참조해서 속성 등록
   ![code1.PNG](img/code1.PNG)
-4. Kibana에서 인덱스 추가함(time pased event 체크 풀기)
+4. Kibana에서 인덱스 추가함(time based event 체크 해제)
   ![5.PNG](img/5.PNG)
 5. Logstash conf 파일 만들기
-  - lib_csv.conf 파일을 다음과 같이 만들어본다.  
+  - lib_csv.conf 파일을 다음을 참조하여 작성한다. 
   ![code2.PNG](img/code2.PNG) 
 6. 실행 및 결과
-  - bin/logstash.bat -f conf/lib_csv.conf 등과 같이 실행한다.
+  - bin/logstash.bat -f conf/lib_csv.conf 실행
   ![6.PNG](img/6.PNG)
 7. 업로드 결과
   - 모든 내용 업로드 되었는지 확인
-  - 위도/경도 값이 없는 정보 등을 제외하고 1,490 업로드 되어 있으면 정상
+  - 위도/경도 값이 없는 정보 등을 제외하고 1,490건 업로드 되어 있으면 정상
 
 [가시화]
 
