@@ -31,6 +31,7 @@
   - localhost:5601 서비스 확인
 3. ElasticSearch에 속성 업로드
   - 아래 내용을 참조해서 속성 등록
+  
 ```json
 curl -XPUT http://localhost:9200/korea-library-2016 -d '
    {
@@ -57,6 +58,7 @@ curl -XPUT http://localhost:9200/korea-library-2016 -d '
 ```
   - Kibana에서 인덱스 추가함(time pased event 체크 풀기)
   ![5.PNG](img/5.PNG)
+  
 4. Logstash conf 파일 만들기
   - lib_csv.conf 파일을 다음과 같이 만들어본다.  
 ```
