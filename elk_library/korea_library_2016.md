@@ -30,8 +30,7 @@
 2. 서비스 가동 
   - localhost:5601 서비스 확인
 3. ElasticSearch에 속성 업로드
-  - 아래 내용을 참조해서 속성 등록
-  
+  - 아래 내용을 참조해서 속성 등록  
 ```json
 curl -XPUT http://localhost:9200/korea-library-2016 -d '
    {
