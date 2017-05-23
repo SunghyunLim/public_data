@@ -19,3 +19,5 @@
   - url : [제주시 무더위쉼터현황](https://www.data.go.kr/subMain.jsp?param=REFUQUAxNTAxMDgxOA==#/L2NvbW0vY29tbW9uU2VhcmNoL29yZ2luRGF0YVNldCRAXjAxMm0xJEBecHVibGljRGF0YVBrPTE1MDEwODE4JEBeYnJtQ2Q9T0MwMDA2JEBeZXhjZWxDb3VudD0wJEBeZG93bmxvYWRDb3VudD0zMiRAXm9yZ0luZGV4PURBVEEkQF5tYXhSb3dzPTEwMDAkQF5za2lwUm93cz0w)
   - 주요정보: 위치(주소 text), 쉼터명칭, 쉼터유형, 이용가능인원
   - 파일: 제주특별자치도+제주시_무더위쉼터현황_20150931.csv, 제주특별자치도+제주시_무더위쉼터현황_20150931.xml
+
+* 추가 사항은 별도 작업/관리 필요
